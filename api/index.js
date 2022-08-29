@@ -28,11 +28,11 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 // app.use('/api/seasons', season);
-app.use('/api/episodes', episodes);
-app.use('/api/season1', season1);
-app.use('/api/season2', season2);
-app.use('/api/season3', season3);
-app.use('/api/season4', season4);
-app.use('/api/season5', season5);
+app.use('/episodes', episodes);
+app.use('/season1', season1);
+app.use('/season2', season2);
+app.use('/season3', season3);
+app.use('/season4', season4);
+app.use('/season5', season5);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
