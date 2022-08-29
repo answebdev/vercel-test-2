@@ -4,6 +4,7 @@ const season2 = require('./season2');
 const season3 = require('./season3');
 const season4 = require('./season4');
 const season5 = require('./season5');
+const base = require('./base');
 
 module.exports = () => ({
   episodes,
