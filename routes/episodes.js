@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const episodes = require('../endpoints/episodes');
 
-// Get a;; episodes
+// Get all episodes
 router.get('/', async (req, res) => {
   try {
     res.json(episodes);
