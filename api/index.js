@@ -1,10 +1,10 @@
+const base = require('../routes/base');
 const episodes = require('../routes/episodes');
 const season1 = require('../routes/season1');
 const season2 = require('../routes/season2');
 const season3 = require('../routes/season3');
 const season4 = require('../routes/season4');
 const season5 = require('../routes/season5');
-const base = require('../routes/base');
 
 const app = require('express')();
 
