@@ -11,6 +11,9 @@
 
 const express = require('express');
 const season = require('./mock/endpoints');
+
+const episodes = require('./routes/episodes');
+const season1 = require('./routes/season1');
 const cors = require('cors');
 
 const app = express();
@@ -20,7 +23,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 // app.use('/api/seasons', season);
-app.use('/episodes', require('./routes/episodes'));
-app.use('/season1', require('./routes/season1'));
+app.use('/api/episodes', episodes);
+app.use('/api/season1', season1);
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
