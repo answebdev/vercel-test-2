@@ -1,13 +1,6 @@
 const router = require('express').Router();
-const episodes = require('../mock/episodes');
+const episodes = require('../endpoints/episodes');
 
-// router.get('/', function (req, res) {
-//   res.send('Users Index Page');
-// });
-
-// router.get('/episodes', function (req, res) {
-//   res.send('Users List Page');
-// });
 router.get('/', async (req, res) => {
   try {
     res.json(episodes);
