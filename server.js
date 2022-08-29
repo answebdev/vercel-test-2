@@ -8,3 +8,17 @@ server.use(middlewares);
 server.use(router);
 
 server.listen(port);
+
+// const express = require('express');
+// const season = require('./mock/endpoints');
+// const cors = require('cors');
+
+// const app = express();
+
+// app.use(cors());
+
+// const PORT = process.env.PORT || 5000;
+
+// app.use('/api/seasons', season);
+
+// app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
