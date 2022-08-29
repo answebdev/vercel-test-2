@@ -19,6 +19,8 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-app.use('/api/seasons', season);
+// app.use('/api/seasons', season);
+app.use('/episodes', require('./routes/episodes'));
+app.use('/season1', require('./routes/season1'));
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}...`));
