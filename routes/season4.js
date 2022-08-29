@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const season4 = require('../endpoints/season4');
 
-// Get all episdoes of season
+// Get all episodes of season
 router.get('/', async (req, res) => {
   try {
     res.json(season4);
@@ -11,11 +11,18 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get single episode
-router.get(`/:episode`, (req, res) => {
+// Get by episode id
+router.get(`/:id`, (req, res) => {
   let items = season4;
-  let data = items.find((item) => item.episode === req.params.episode);
+  let data = items.find((item) => item.id == req.params.id);
   res.json(data);
 });
+
+// Get single episode
+// router.get(`/:episode`, (req, res) => {
+//   let items = season4;
+//   let data = items.find((item) => item.episode === req.params.episode);
+//   res.json(data);
+// });
 
 module.exports = router;
