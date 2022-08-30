@@ -11,9 +11,15 @@ const app = require('express')();
 
 // Rate Limiting - this code needs to be added before routes => app.use('/', base), etc.
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes - after 15 minutes, you can make requests again)
+  windowMs: 100 * 60 * 1000, // 10 mins
+  max: 5,
+  message: '🙁',
 });
+
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes - after 15 minutes, you can make requests again)
+// });
 
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
