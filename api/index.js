@@ -7,19 +7,7 @@ const season3 = require('../routes/season3');
 const season4 = require('../routes/season4');
 const season5 = require('../routes/season5');
 
-const compression = require('compression');
-
 const app = require('express')();
-
-// compress all responses
-app.use(
-  compression({
-    filter: (req, res) => {
-      if (req.get('Accept-Encoding').includes('gzip')) return true;
-      else return false;
-    },
-  })
-);
 
 // Rate Limiting - this code needs to be added before routes => app.use('/', base), etc.
 // const limiter = rateLimit({
