@@ -7,6 +7,8 @@ const season3 = require('../routes/season3');
 const season4 = require('../routes/season4');
 const season5 = require('../routes/season5');
 
+const compression = require('compression');
+
 const app = require('express')();
 
 // Rate Limiting - this code needs to be added before routes => app.use('/', base), etc.
@@ -35,6 +37,9 @@ app.use(limiter);
 const cors = require('cors');
 
 app.use(cors());
+
+// compress all responses
+app.use(compression());
 
 const PORT = process.env.PORT || 5000;
 
