@@ -7,12 +7,31 @@ const season3 = require('../routes/season3');
 const season4 = require('../routes/season4');
 const season5 = require('../routes/season5');
 
+const compression = require('compression');
+
 const app = require('express')();
 
+// compress all responses
+app.use(
+  compression({
+    filter: (req, res) => {
+      if (req.get('Accept-Encoding').includes('gzip')) return true;
+      else return false;
+    },
+  })
+);
+
 // Rate Limiting - this code needs to be added before routes => app.use('/', base), etc.
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes - after 15 minutes, you can make requests again)
+// });
+
+// Standard - Rate limits may vary by service, but the defaults are: Hourly Limit: 1,000 requests per hour.
+// https://api.data.gov/docs/rate-limits/
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes - after 15 minutes, you can make requests again)
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 1000, // Limit each IP to 1000 requests per `window` (here, per 1 hour - after 1 hour, you can make requests again)
 });
 
 // Test: Max 5 requests allowed every 10 minutes
