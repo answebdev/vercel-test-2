@@ -7,6 +7,8 @@ const season3 = require('../routes/season3');
 const season4 = require('../routes/season4');
 const season5 = require('../routes/season5');
 
+const compression = require('compression');
+
 const app = require('express')();
 
 // Rate Limiting - this code needs to be added before routes => app.use('/', base), etc.
@@ -22,19 +24,15 @@ const limiter = rateLimit({
   max: 1000, // Limit each IP to 1000 requests per `window` (here, per 1 hour - after 1 hour, you can make requests again)
 });
 
-// Test: Max 5 requests allowed every 10 minutes
-// const limiter = rateLimit({
-//   windowMs: 100 * 60 * 1000, // 10 mins
-//   max: 5,
-//   message: '🙁',
-// });
-
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 
 const cors = require('cors');
 
 app.use(cors());
+
+// compress all responses
+app.use(compression());
 
 const PORT = process.env.PORT || 5000;
 
