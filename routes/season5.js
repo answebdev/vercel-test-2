@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const season5 = require('../endpoints/season5');
 
+const cache = require('../api/routeCache');
+
 // Get all episodes of season
-router.get('/', async (req, res) => {
+router.get('/', cache(300), async (req, res) => {
   try {
     res.json(season5);
   } catch (error) {
@@ -12,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get by episode id
-router.get(`/:id`, (req, res) => {
+router.get(`/:id`, cache(300), (req, res) => {
   let items = season5;
   let data = items.find((item) => item.id == req.params.id);
   res.json(data);
