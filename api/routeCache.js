@@ -9,7 +9,6 @@ module.exports = (duration) => (req, res, next) => {
     console.error('Cannot cache non-GET methods');
     return next();
   }
-
   // Check if key exists in cache
   const key = req.originalUrl;
   const cachedResponse = cache.get(key);
